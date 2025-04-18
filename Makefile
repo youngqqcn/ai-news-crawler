@@ -1,2 +1,2 @@
 start:
-	nohup python3 feishu_bot.py > bot.log 2>&1 &
+	nohup .venv/bin/python feishu_bot.py > bot.log 2>&1 &
