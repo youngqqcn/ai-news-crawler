@@ -1,2 +1,2 @@
 start:
-	nohup python3 server.py > server.log 2>&1 &
+	nohup python3 feishu_bot.py > bot.log 2>&1 &
