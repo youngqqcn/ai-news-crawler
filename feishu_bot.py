@@ -30,7 +30,7 @@ def push_news():
                     news += f"[{i}.{item['title']}]({item['link']})\n\n"
                 else:
                     words = quote(f'根据以下信息搜集全网最新资料，并根据事实解读。信息：【{item['title']}】')
-                    news += f"[{i}.{item['title']}](https://chat.baidu.com/search?word={words}\n\n"
+                    news += f"[{i}.{item['title']}](https://chat.baidu.com/search?word={words})\n\n"
 
             headers = {
                 "Content-Type": "application/json; charset=utf-8",
