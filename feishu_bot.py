@@ -32,6 +32,7 @@ def push_news():
                     words = quote(f'根据以下信息搜集全网最新资料，并根据事实解读。信息：【{item['title']}】')
                     news += f"[{i}.{item['title']}](https://chat.baidu.com/search?word={words})\n\n"
 
+            news = news[:-3] # 去掉最后的\n\n
             headers = {
                 "Content-Type": "application/json; charset=utf-8",
             }
@@ -60,7 +61,7 @@ def push_news():
 
 if __name__ == "__main__":
 
-    # push_news()
+    push_news()
 
     # 执行发送文本消息
     schedule.every().day.at("12:30").do(push_news)
