@@ -6,6 +6,7 @@ import os
 from dotenv import load_dotenv
 import schedule
 import time
+from urllib.parse import quote
 
 load_dotenv()
 
@@ -24,7 +25,12 @@ def push_news():
 
             news = ""
             for i, item in enumerate(data["data"]["news"]):
-                news += f"[{i}. {item['title']}](https://chat.baidu.com/search?word={item['title']})\n"
+                if  item['link'] is not None:
+                    # print("link: ", item['link'])
+                    news += f"[{i}.{item['title']}]({item['link']})\n\n"
+                else:
+                    words = quote(f'根据以下信息搜集全网最新资料，并根据事实解读。信息：【{item['title']}】')
+                    news += f"[{i}.{item['title']}](https://chat.baidu.com/search?word={words}\n\n"
 
             headers = {
                 "Content-Type": "application/json; charset=utf-8",
@@ -54,8 +60,10 @@ def push_news():
 
 if __name__ == "__main__":
 
+    # push_news()
+
     # 执行发送文本消息
-    schedule.every().day.at("20:00").do(push_news)
+    schedule.every().day.at("12:30").do(push_news)
 
     while True:
         schedule.run_pending()
