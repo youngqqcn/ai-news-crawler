@@ -23,7 +23,7 @@ def push_news():
             )
             data = data.json()
 
-            news = ""
+            news = ''
             for i, item in enumerate(data["data"]["news"]):
                 if  item['link'] is not None:
                     # print("link: ", item['link'])
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     # push_news()
 
     # 执行发送文本消息
-    schedule.every().day.at("12:30").do(push_news)
+    schedule.every().day.at("9:31").do(push_news)
 
     while True:
         schedule.run_pending()
