@@ -56,7 +56,7 @@ def push_news():
         except Exception as e:
             traceback.print_exc()
             try_times += 1
-            time.sleep(10 * 60)  # 10分钟重试一次
+            time.sleep(1 * 60)  # 1分钟重试一次
 
 
 if __name__ == "__main__":
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     # push_news()
 
     # 执行发送文本消息
-    schedule.every().day.at("09:35").do(push_news)
+    schedule.every().day.at("09:30:30").do(push_news)
 
     while True:
         schedule.run_pending()
