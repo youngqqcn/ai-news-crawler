@@ -64,7 +64,7 @@ if __name__ == "__main__":
     # push_news()
 
     # 执行发送文本消息
-    schedule.every().day.at("9:31").do(push_news)
+    schedule.every().day.at("09:32").do(push_news)
 
     while True:
         schedule.run_pending()
