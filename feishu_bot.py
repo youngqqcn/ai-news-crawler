@@ -17,6 +17,9 @@ def push_news():
     while try_times < 5:
         try:
             webhook_url = os.getenv("FEISHU_WEBHOOK_URL")
+            if not webhook_url:
+                print("请设置环境变量 FEISHU_WEBHOOK_URL")
+                return
             today = datetime.datetime.now().astimezone().strftime("%Y-%m-%d")
             data = requests.get(
                 f"https://www.aicpb.com/api/dailyReports/get?date={today}"
